@@ -108,7 +108,7 @@ X_train=np.array(list(X_train), dtype=np.float)
 Y_train=np.array(list(Y_train), dtype=np.float)
 mlp.fit(X_train,Y_train)
 
-##writing fit model
+#writing fit model
 print("____________________________________________________________start picking_____________________________________________________________________")
 pickle_out=open(r"D:\FINAL YEAR\code\knife_model_hog_tanh400803012.pkl","wb")
 pickle.dump(mlp,pickle_out)
