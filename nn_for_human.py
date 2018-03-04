@@ -7,19 +7,19 @@ import csv as csv
 data=[]
 label=[]
 
-# with open(r"D:\FINAL YEAR\code\negative_data_human.csv",'r') as f:
-#     reader = csv.reader(f)     
-#     for row in reader:          #fill array by file info by for loop
-#         print(row)
-#         data.append(row)
-#     data = np.array(data) 
-# print(1)
-# with open(r"D:\FINAL YEAR\code\positive_data_human.csv",'r') as f:
-#     reader = csv.reader(f)     
-#     for row in reader:          #fill array by file info by for loop
-#         data.append(row)
-#     data = np.array(data) 
-# print(2)
+with open(r"D:\FINAL YEAR\code\negative_data_human.csv",'r') as f:
+    reader = csv.reader(f)     
+    for row in reader:          #fill array by file info by for loop
+        print(row)
+        data.append(row)
+    data = np.array(data) 
+print(1)
+with open(r"D:\FINAL YEAR\code\positive_data_human.csv",'r') as f:
+    reader = csv.reader(f)     
+    for row in reader:          #fill array by file info by for loop
+        data.append(row)
+    data = np.array(data) 
+print(2)
 with open(r"D:\FINAL YEAR\code\label_human_whole.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
