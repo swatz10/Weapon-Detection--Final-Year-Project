@@ -3,7 +3,8 @@ import numpy as np
 import csv
 import cv2
 import os
-folder=r'D:\FINAL YEAR\code\GunDataset'
+folder=r'D:\FINAL YEAR\Dataset\GunDataset'
+count=0
 for filename in os.listdir(folder):
     image = cv2.imread(os.path.join(folder,filename))
     print(type(image))
@@ -29,5 +30,7 @@ for filename in os.listdir(folder):
     a=a.T
     f=open(r"D:\FINAL YEAR\code\pos_gun_hog.csv","ba")
     np.savetxt(f,a,delimiter=',')
+    count+=1
+    print(count)
     f.close
     cv2.waitKey(0)

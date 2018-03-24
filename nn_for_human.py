@@ -3,16 +3,15 @@ from sklearn.neural_network import MLPClassifier
 import pickle
 import numpy as np
 import csv as csv
-
+"""
 data=[]
 label=[]
 
 with open(r"D:\FINAL YEAR\code\negative_data_human.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
-        print(row)
+        # print(row)
         data.append(row)
-    data = np.array(data) 
 print(1)
 with open(r"D:\FINAL YEAR\code\positive_data_human.csv",'r') as f:
     reader = csv.reader(f)     
@@ -85,49 +84,51 @@ X_train=[]
 X_test=[]
 Y_train=[]
 Y_test=[]
-with open(r"D:\FINAL YEAR\code\X_train.csv",'r') as f:
+with open(r"D:\FINAL YEAR\code\X_train_hogHuman.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
         X_train.append(row)
     X_train = np.array(X_train) 
 print(1)
-with open(r"D:\FINAL YEAR\code\X_test.csv",'r') as f:
+with open(r"D:\FINAL YEAR\code\X_test_hogHuman.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
         X_test.append(row)
     X_test = np.array(X_test) 
 print(2)
-with open(r"D:\FINAL YEAR\code\Y_train.csv",'r') as f:
+with open(r"D:\FINAL YEAR\code\Y_train_hogHuman.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
         Y_train.append(row)
     Y_train = np.array(Y_train)
 print(3)
-with open(r"D:\FINAL YEAR\code\Y_test.csv",'r') as f:
+with open(r"D:\FINAL YEAR\code\Y_test_hogHuman.csv",'r') as f:
     reader = csv.reader(f)     
     for row in reader:          #fill array by file info by for loop
         Y_test.append(row)
     Y_test = np.array(Y_test)
 print(4)
-#print(X_test)
-#print(Y_test)
-"""
+print(X_train)
+print(Y_train)
+print(X_test)
+print(Y_test)
+
 ##classifer
 
-mlp = MLPClassifier(hidden_layer_sizes=(400,80,30,12),max_iter=10000000,activation='tanh')
+mlp = MLPClassifier(hidden_layer_sizes=(1000,400,80,30,12),max_iter=10000000,activation='tanh')
 X_train=np.array(list(X_train), dtype=np.float)
 Y_train=np.array(list(Y_train), dtype=np.float)
 mlp.fit(X_train,Y_train)
 
 ##writing fit model
 print("____________________________________________________________start picking_____________________________________________________________________")
-pickle_out=open(r"D:\FINAL YEAR\code\human_model_hog_tanh400803012.pkl","wb")
+pickle_out=open(r"D:\FINAL YEAR\code\human_model_hog_tanh1000400803012.pkl","wb")
 pickle.dump(mlp,pickle_out)
 pickle_out.close()
 X_test=np.array(list(X_test), dtype=np.float)
 Y_test=np.array(list(Y_test), dtype=np.float)
 print(Y_test.shape)
-pickle_out=open(r"D:\FINAL YEAR\code\human_model_hog_tanh400803012.pkl","rb")
+pickle_out=open(r"D:\FINAL YEAR\code\human_model_hog_tanh1000400803012.pkl","rb")
 mlp=pickle.load(pickle_out)
 pickle_out.close()
 predictions=mlp.predict(X_test)

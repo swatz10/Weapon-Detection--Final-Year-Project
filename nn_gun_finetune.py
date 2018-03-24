@@ -143,17 +143,12 @@ import os
 mlp = MLPClassifier(hidden_layer_sizes=(400,80,30,12),max_iter=10000000,activation='tanh')
 
 filelist1= glob.glob(r'D:\FINAL YEAR\Dataset\KnivesImagesDatabase\KnivesImagesDatabase\NEGATIVES_ALL\*.bmp')
-filelist2= glob.glob(r'C:\frames\Chef knife\knife-no\*.jpg')
-filelist3 = glob.glob(r'C:\frames\knife-rebel\knife-no\*.jpg')
-filelist4= glob.glob(r'C:\frames\gun- is that badge\knife-no\*.jpg')
-filelist5 = glob.glob(r'C:\frames\gun- somebody\knife-no\*.jpg')
-filelist6= glob.glob(r'C:\frames\Mall\knife-no\*.jpg')
-filelist7 = glob.glob(r'C:\frames\Patna\knife-no\*.jpg')
-filelist8 = glob.glob(r'C:\frames\Sultanganj\knife-no\*.jpg')
+filelist2= glob.glob(r'C:\frames\Chef knife\knife hog- no\*.jpg')
+filelist3 = glob.glob(r'C:\frames\knife-rebel\knife hog- no\*.jpg')
 
-filelist9= glob.glob(r'D:\FINAL YEAR\Dataset\KnivesImagesDatabase\KnivesImagesDatabase\POSITIVES_ALL\*.bmp')
-filelist10= glob.glob(r'C:\frames\Chef knife\knife-yes\*.jpg')
-filelist11= glob.glob(r'C:\frames\knife-rebel\knife-yes\*.jpg')
+filelist4= glob.glob(r'D:\FINAL YEAR\Dataset\KnivesImagesDatabase\KnivesImagesDatabase\POSITIVES_ALL\*.bmp')
+filelist5 = glob.glob(r'C:\frames\Chef knife\knife hog- yes\*.jpg')
+filelist6 = glob.glob(r'C:\frames\knife-rebel\knife hog- yes\*.jpg')
 hist=[]
 countneg=0
 countpos=0
@@ -223,6 +218,8 @@ for file in filelist3:
     # a=a.T
     hist.append(a)
     countneg+=1
+print("neg:")
+print(countneg)
 for file in filelist4:
     img=cv2.imread(file)
     winSize = (88,88)
@@ -244,7 +241,7 @@ for file in filelist4:
     a = hog.compute(img,winStride,padding,locations) #4356
     # a=a.T
     hist.append(a)
-    countneg+=1
+    countpos+=1
 for file in filelist5:
     img=cv2.imread(file)
     winSize = (88,88)
@@ -266,121 +263,8 @@ for file in filelist5:
     a = hog.compute(img,winStride,padding,locations) #4356
     # a=a.T
     hist.append(a)
-    countneg+=1
+    countpos+=1
 for file in filelist6:
-    img=cv2.imread(file)
-    winSize = (88,88)
-    blockSize = (8,8)
-    blockStride = (8,8)
-    cellSize = (4,4)
-    nbins = 9
-    derivAperture = 1
-    winSigma = 4.
-    histogramNormType = 0
-    L2HysThreshold = 2.0000000000000001e-01
-    gammaCorrection = 0
-    nlevels = 64
-    hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
-    #compute(img[, winStride[, padding[, locations]]]) -> descriptors
-    winStride = (8,8)
-    padding = (8,8)
-    locations = ((10,20),)
-    a = hog.compute(img,winStride,padding,locations) #4356
-    # a=a.T
-    hist.append(a)
-    countneg+=1
-for file in filelist7:
-    img=cv2.imread(file)
-    winSize = (88,88)
-    blockSize = (8,8)
-    blockStride = (8,8)
-    cellSize = (4,4)
-    nbins = 9
-    derivAperture = 1
-    winSigma = 4.
-    histogramNormType = 0
-    L2HysThreshold = 2.0000000000000001e-01
-    gammaCorrection = 0
-    nlevels = 64
-    hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
-    #compute(img[, winStride[, padding[, locations]]]) -> descriptors
-    winStride = (8,8)
-    padding = (8,8)
-    locations = ((10,20),)
-    a = hog.compute(img,winStride,padding,locations) #4356
-    # a=a.T
-    hist.append(a)
-    countneg+=1
-for file in filelist8:
-    img=cv2.imread(file)
-    winSize = (88,88)
-    blockSize = (8,8)
-    blockStride = (8,8)
-    cellSize = (4,4)
-    nbins = 9
-    derivAperture = 1
-    winSigma = 4.
-    histogramNormType = 0
-    L2HysThreshold = 2.0000000000000001e-01
-    gammaCorrection = 0
-    nlevels = 64
-    hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
-    #compute(img[, winStride[, padding[, locations]]]) -> descriptors
-    winStride = (8,8)
-    padding = (8,8)
-    locations = ((10,20),)
-    a = hog.compute(img,winStride,padding,locations) #4356
-    # a=a.T
-    hist.append(a)
-    countneg+=1
-
-print("neg:")
-print(countneg)
-for file in filelist9:
-    img=cv2.imread(file)
-    winSize = (88,88)
-    blockSize = (8,8)
-    blockStride = (8,8)
-    cellSize = (4,4)
-    nbins = 9
-    derivAperture = 1
-    winSigma = 4.
-    histogramNormType = 0
-    L2HysThreshold = 2.0000000000000001e-01
-    gammaCorrection = 0
-    nlevels = 64
-    hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
-    #compute(img[, winStride[, padding[, locations]]]) -> descriptors
-    winStride = (8,8)
-    padding = (8,8)
-    locations = ((10,20),)
-    a = hog.compute(img,winStride,padding,locations) #4356
-    # a=a.T
-    hist.append(a)
-    countpos+=1
-for file in filelist10:
-    img=cv2.imread(file)
-    winSize = (88,88)
-    blockSize = (8,8)
-    blockStride = (8,8)
-    cellSize = (4,4)
-    nbins = 9
-    derivAperture = 1
-    winSigma = 4.
-    histogramNormType = 0
-    L2HysThreshold = 2.0000000000000001e-01
-    gammaCorrection = 0
-    nlevels = 64
-    hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
-    #compute(img[, winStride[, padding[, locations]]]) -> descriptors
-    winStride = (8,8)
-    padding = (8,8)
-    locations = ((10,20),)
-    a = hog.compute(img,winStride,padding,locations) #4356
-    # a=a.T
-    hist.append(a)
-    countpos+=1
-for file in filelist11:
     img=cv2.imread(file)
     winSize = (88,88)
     blockSize = (8,8)
@@ -439,6 +323,6 @@ os.remove(r"D:\FINAL YEAR\code\label_knife_pos_finetune.csv")
 
 
 print("____________________________________________________________start picking_____________________________________________________________________")
-pickle_out=open(r"D:\FINAL YEAR\code\models(finetuneAll)\knife_model_hog400803012.pkl","wb")
+pickle_out=open(r"D:\FINAL YEAR\code\models(fresh)\knife_model_hog_tanh400803012.pkl","wb")
 pickle.dump(mlp,pickle_out)
 pickle_out.close()

@@ -8,10 +8,10 @@ import cv2
 import numpy as np
 
 def main():
-
+    count=0
     # loading astronaut image
-    img = cv2.imread(r'D:\FINAL YEAR\code\test3.jpg')
-    print(img.shape)
+    img = cv2.imread(r'D:\FINAL YEAR\code\test4.jpg')
+    # print(img.shape)
     
 
     # perform selective search
@@ -28,7 +28,7 @@ def main():
             continue
         # distorted rects
         x, y, w, h = r['rect']
-        if w / h > 1.2 or h / w > 1.2:
+        if w / h > 1.1 or h / w > 1.1:
             continue
         candidates.add(r['rect'])
 
@@ -37,8 +37,10 @@ def main():
     ax.imshow(img)
     for x, y, w, h in candidates:
         print(x, y, w, h)
-        rect = mpatches.Rectangle(
-            (x, y), w, h, fill=False, edgecolor='red', linewidth=1)
+        seg=img[y:y+h,x:x+w]
+        count+=1
+        cv2.imwrite(r"D:\FINAL YEAR\code\%d.jpg" % count, seg)
+        rect = mpatches.Rectangle((x, y), w, h, fill=False, edgecolor='red', linewidth=1)
         ax.add_patch(rect)
 
     plt.show()

@@ -1,11 +1,15 @@
 #hog for knife
-
+import glob
 import cv2
 import numpy as np
 import csv
 i=10000;
+# filelist = glob.glob(r'D:\FINAL YEAR\Dataset\\*.jpg')
 while (i<=19339) :
-    image=cv2.imread(r"D:\FINAL YEAR\code\KnivesImagesDatabase\KnivesImagesDatabase\NEGATIVES_ALL\%d.bmp" %i);
+    image=cv2.imread(r"D:\FINAL YEAR\Dataset\KnivesImagesDatabase\KnivesImagesDatabase\NEGATIVES_ALL\%d.bmp" %i);
+    height, width = image.shape[:2]
+    if(height<100 or width<100):
+        image=cv2.resize(image,(100,100))
     winSize = (88,88)
     blockSize = (8,8)
     blockStride = (8,8)
@@ -26,7 +30,7 @@ while (i<=19339) :
     hist = hog.compute(image,winStride,padding,locations) #4356
     a=np.asarray(hist)
     a=a.T
-    f=open(r"D:\FINAL YEAR\code\negative_data_knife.csv","ba")
+    f=open(r"D:\FINAL YEAR\code\neg_gun_hog.csv","ba")
     np.savetxt(f,a,delimiter=',')
     f.close
     i=i+1;
