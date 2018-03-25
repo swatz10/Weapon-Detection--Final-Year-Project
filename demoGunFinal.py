@@ -13,6 +13,7 @@ import pickle
 #  twilio
 account_sid = "AC51dcf85dfa87366655ecf225d6230023"
 auth_token = "67e8115c2a2b0ec1c0c7e425aa90ffca"
+client = Client(account_sid, auth_token)
 
 pickle_out=open(r"D:\FINAL YEAR\code\models (not finetuned)\gun_model_hogtanh400803012.pkl","rb")
 mlp=pickle.load(pickle_out)
@@ -27,7 +28,6 @@ vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Guns- Is That a Badge
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Patna Junction.mp4')
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Shopping Mall.mp4')
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Sultanganj railway station.mp4')
-success,image = vidcap.read()
 count = 0
 success = True
 flag=0
@@ -109,33 +109,33 @@ while success:
                         # cv2.imwrite(r"C:\finetunedAll Output\Chef knife\gun-yes\cfyes_op%d.jpg" % count, seg) 
                         # cv2.imwrite(r"C:\finetunedAll Output\knife-rebel\gun-yes\cfyes_op%d.jpg" % count, seg) 
 
-                        # cv2.imwrite(r"C:\finetunedAll Output\gun- somebody\gun-yes\cfyes_op%d.jpg" % count, seg) 
-                        # cv2.imwrite(r"C:\finetunedAll Output\gun- is that badge\gun-yes\cfyes_op%d.jpg" % count, seg)
+                        # cv2.imwrite(r"C:\Original Output\gun- somebody\gun-yes\cfyes_op%d.jpg" % count, seg) 
+                        cv2.imwrite(r"C:\Original Output\gun- is that badge\gun-yes\cfyes_op%d.jpg" % count, seg)
                         
                         # cv2.imwrite(r"C:\finetunedAll Output\Mall\gun-yes\cfyes_op%d.jpg" % count, seg) 
                         # cv2.imwrite(r"C:\finetunedAll Output\Patna\gun-yes\cfyes_op%d.jpg" % count, seg) 
                         # cv2.imwrite(r"C:\finetunedAll Output\Sultanganj\gun-yes\cfyes_op%d.jpg" % count, seg) 
 
                         flag=0
-                        client = Client(account_sid, auth_token)
+                        """                
                         client.api.account.messages.create(
                             to="+917892416752",
                             from_="+18443873970",
                             body="alert !!!")
+                        
                         fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
                         ax.imshow(img)
                         rect = mpatches.Rectangle((x, y), w, h, fill=False, edgecolor='red', linewidth=1)
                         ax.add_patch(rect)
                         plt.show()
-                        exit()
-                        # cv2.imshow("gun",img)
+                        """
                 if res[k]==0:
-                    continue;
+                    # continue;
                     # cv2.imwrite(r"C:\finetunedAll Output\Chef knife\gun-no\cfno_op%d.jpg" % count, seg)
                     # cv2.imwrite(r"C:\finetunedAll Output\knife-rebel\gun-no\cfno_op%d.jpg" %count,seg)
 
-                    # cv2.imwrite(r"C:\finetunedAll Output\gun- somebody\gun-no\cfno_op%d.jpg" % count, seg) 
-                    # cv2.imwrite(r"C:\finetunedAll Output\gun- is that badge\gun-no\cfno_op%d.jpg" % count, seg) 
+                    # cv2.imwrite(r"C:\Original Output\gun- somebody\gun-no\cfno_op%d.jpg" % count, seg) 
+                    cv2.imwrite(r"C:\Original Output\gun- is that badge\gun-no\cfno_op%d.jpg" % count, seg) 
 
                     # cv2.imwrite(r"C:\finetunedAll Output\Mall\gun-no\cfno_op%d.jpg" % count, seg) 
                     # cv2.imwrite(r"C:\finetunedAll Output\Patna\gun-no\cfno_op%d.jpg" % count, seg) 
