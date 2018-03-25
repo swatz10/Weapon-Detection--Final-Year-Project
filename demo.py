@@ -9,18 +9,18 @@ import matplotlib.patches as mpatches
 import selectivesearch
 
 import pickle
-# pickle_out=open(r"D:\FINAL YEAR\code\models (finetuned 2nd)\knife_model_hog_tanh400803012.pkl","rb")
+pickle_out=open(r"D:\FINAL YEAR\code\models (finetuned 2nd)\knife_model_hog_tanh400803012.pkl","rb")
 # pickle_out=open(r"D:\FINAL YEAR\code\models(fresh)\knife_model_hog_tanh400803012.pkl","rb")
 # pickle_out=open(r'D:\FINAL YEAR\code\models (not finetuned)\knife_model_hog_tanh400803012.pkl',"rb");
-pickle_out=open(r'D:\FINAL YEAR\code\models(finetuneAll)\knife_model_hog400803012.pkl',"rb");
+# pickle_out=open(r'D:\FINAL YEAR\code\models(finetuneAll)\knife_model_hog400803012.pkl',"rb");
 
 
 
 mlp=pickle.load(pickle_out)
 pickle_out.close()
 print("loaded")
-vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Rebel Without a Cause -Knife.mp4')
-# vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Chef Uses Her Knife.avi')
+# vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Rebel Without a Cause -Knife.mp4')
+vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Chef Uses Her Knife.avi')
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Guns- Is That a Badge.mp4')
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\gun-Somebody Or Nobody.mp4')
 # vidcap = cv2.VideoCapture(r'D:\FINAL YEAR\code\demo videos\Patna Junction.mp4')
@@ -108,8 +108,8 @@ while success:
                 if res[k]==1:
                     if flag==0:
                         flag=1
-                        # cv2.imwrite(r"C:\finetunedAll Output\Chef knife\knife-yes\cfyes_op%d.jpg" % count, seg) 
-                        cv2.imwrite(r"C:\finetunedAll Output\knife-rebel\knife-yes\cfyes_op%d.jpg" % count, seg) 
+                        cv2.imwrite(r"C:\Original Output\Chef knife\knife-yes\cfyes_op%d.jpg" % count, seg) 
+                        # cv2.imwrite(r"C:\Original Output\knife-rebel\knife-yes\cfyes_op%d.jpg" % count, seg) 
 
                         # cv2.imwrite(r"C:\finetunedAll Output\gun- somebody\knife-yes\cfyes_op%d.jpg" % count, seg) 
                         # cv2.imwrite(r"C:\finetunedAll Output\gun- is that badge\knife-yes\cfyes_op%d.jpg" % count, seg)
@@ -120,8 +120,8 @@ while success:
                         flag=0
                         # cv2.imshow("gun",img)
                 if res[k]==0:
-                    # cv2.imwrite(r"C:\finetunedAll Output\Chef knife\knife-no\cfno_op%d.jpg" % count, seg)
-                    cv2.imwrite(r"C:\finetunedAll Output\knife-rebel\knife-no\cfno_op%d.jpg" %count,seg)
+                    cv2.imwrite(r"C:\Original Output\Chef knife\knife-no\cfno_op%d.jpg" % count, seg)
+                    # cv2.imwrite(r"C:\Original Output\knife-rebel\knife-no\cfno_op%d.jpg" %count,seg)
 
                     # cv2.imwrite(r"C:\finetunedAll Output\gun- somebody\knife-no\cfno_op%d.jpg" % count, seg) 
                     # cv2.imwrite(r"C:\finetunedAll Output\gun- is that badge\knife-no\cfno_op%d.jpg" % count, seg) 
